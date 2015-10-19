@@ -8,6 +8,61 @@ body {
     overflow-x: hidden;
 }
 
+/*!
+ *HEADER START
+ */
+
+#logo {
+    margin-top: -30px;
+    margin-right: 10px;
+}
+
+#login {
+    display: inline;
+    position: relative;
+    width: 449px;
+    height: 92px;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+#login-content {
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-top: 22px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+#login-content p {
+    padding: 5px;
+    margin: 0;
+    font-size: 14px;
+}
+
+#login-content .signin {
+    color:#896374;
+    border: 1px solid white;
+    padding: 3px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.inline {
+    display: inline;
+}
+
+#outstanding {
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+/*!
+ *HEADER END
+ */
+
 p {
     font-size: 20px;
 }
