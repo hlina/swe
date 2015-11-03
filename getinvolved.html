@@ -58,17 +58,27 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#board">GBMs and Activities</a>
+                    <li class="">
+                        <a href="index.html#board">ABOUT</a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#calendar">Professional</a>
+                    <li class="">
+                        <a href="index.html#subscribe">UPCOMING EVENTS</a>
                     </li>
+                    <li class="">
+                        <a href="index.html#sponsorship">PROGRAMMING</a>
+                    </li class="dropdown pull-right">
                     <li class="page-scroll">
-                        <a href="#sponsorship">Corporate Dinner</a>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">GET INVOLVED<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#board">Board</a></li>
+                            <li><a href="#subscribe">Subscribe</a></li>
+                            <li><a href="#sponsorship">Sponsorship</a></li>
+                            <li><a href="#contact">Email Us</a></li>
+                        </ul>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#gears">Gear's Day</a>
+
+                    <li class = "page-scroll">
+                        <a href="#" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-search"></span> Sign In</a>
                     </li>
                 </ul>
             </div>
@@ -77,7 +87,7 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <!-- Pictures Section -->
+    <!-- Social Media Section -->
     <header>
         <div class="container">
             <div class="row">
@@ -91,12 +101,12 @@
         </div>
     </header>
 
-    <!-- About Section -->
+    <!-- board section -->
     <section class="success" id="board">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center intro-text">
-                    <h2>Vision</h2>
+                    <h2>Board</h2>
                     <hr class="star-light">
                 </div>
             </div>
@@ -114,18 +124,10 @@
                 </div>
             </div>
         </div>
-        <div id = "outstanding">
-            <table>
-            <tr>
-                <td><img class="img-responsive center" src="img/outstanding1.png" alt="" height = "150px" width = "200px"></td>
-                <td><img class="img-responsive center" src="img/outstanding2.png" alt="" height = "150px" width = "200px"></td>
-            </tr>
-            </table>
-        </div>
     </section>
 
-    <!-- Portfolio Grid Section -->
-    <section id="calendar">
+    <!-- subscribe section -->
+    <section id="subscribe">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -136,7 +138,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- sponsorship Section -->
     <section class="success" id="sponsorship">
         <div class="container">
             <div class="row">
@@ -161,17 +163,61 @@
         </div>
     </section>
 
-        <!-- Portfolio Grid Section -->
-    <section id="gears">
+    <!-- contact Section -->
+    <section id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Calendar</h2>
+                    <h2>email Us</h2>
                     <hr class="star-primary">
                 </div>
-                <center><iframe src="https://www.google.com/calendar/b/0/embed?title=Penn%20SWE&amp;height=360&amp;wkst=1&amp;bgcolor=%23f2f0f0&amp;src=pennswe%40gmail.com&amp;color=%237A367A&amp;ctz=America%2FNew_York" style=" border-width:0 " width="700" height="500" frameborder="0" scrolling="no"></iframe></center>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Phone Number</label>
+                                <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Message</label>
+                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="text-center">
@@ -179,10 +225,10 @@
             <div class="container">
                 <div class="row">
                     <div class="footer-col col-md-4">
-                        <h3>ABOUT</h3>
-                        <a href = "#about">Vision</a><br>
-                        <a href = "board.html">Board</a><br>
-                        <a href = "https://www.facebook.com/upenn.sweundergrad/photos">Photos</a>
+                        <h3>HOME</h3>
+                        <a href = "index.html#about">About</a><br>
+                        <a href = "index.html#calendar">Upcoming Events</a><br>
+                        <a href = "index.html#programming">Programming</a>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
@@ -196,9 +242,10 @@
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>GET INVOLVED</h3>
-                        <a href = "sponsors.html">Sponsorship</a><br>
-                        <a href = "programming.html">Programming</a><br>
-                        <a href = "subscribe.html">Subscribe/Join</a>
+                        <a href = "#board">Board</a><br>
+                        <a href = "#subscribe">Subscribe</a><br>
+                        <a href = "#sponsorship">Sponsorship</a><br>
+                        <a href = "#contact">Email Us</a>
                     </div>
                 </div>
             </div>
