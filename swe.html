@@ -31,6 +31,45 @@
 
 </head>
 
+    <!-- Slideshow -->
+    <script type="text/javascript">
+    var interval = 3500;
+    var imageDir = "";
+
+    var imageNum = 0;
+    imageArray = new Array();
+    imageArray[imageNum++] = new imageItem(imageDir + "Love.jpg");
+    imageArray[imageNum++] = new imageItem(imageDir + "pic.jpg");
+    var totalImages = imageArray.length;
+    function imageItem(image_location) {
+        this.image_item = new Image();
+        this.image_item.src = image_location;
+    }
+    function get_ImageItemLocation(imageObj) {
+        return(imageObj.image_item.src);
+    }
+
+    function getNextImage() {
+        imageNum = (imageNum+1) % totalImages;
+        var new_image = get_ImageItemLocation(imageArray[imageNum]);
+        return(new_image);
+    }   
+    function getPrevImage() {
+        imageNum = (imageNum-1) % totalImages;
+        var new_image = get_ImageItemLocation(imageArray[imageNum]);
+        return(new_image);
+    }
+    function prevImage(place) {
+        var new_image = getPrevImage();
+        document[place].src = new_image;
+    }
+    function switchImage(place) {
+        var new_image = getNextImage();
+        document[place].src = new_image;
+        var recur_call = "switchImage('"+place+"')";
+        timerID = setTimeout(recur_call, interval);
+    }
+    </script>
 
 <body id="page-top" class="index">
 
@@ -98,8 +137,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <span class="name"></span>
-                        <hr class="star-light">
+                    <center>
+                        <img name="slideImg" src="Love.jpg" width=500 height=375 border=0>
+                        </br>
+                        <a onClick="prevImage('slideImg'); clearTimeout(timerID)"> previous</a>
+                        <a onClick="switchImage('slideImg'); clearTimeout(timerID)">next </a>
+                    </center>
                     </div>
                 </div>
             </div>
@@ -107,12 +150,12 @@
     </header>
 
     <!-- About Section -->
-    <section class="success" id="about">
+    <section id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center intro-text">
                     <h2>About</h2>
-                    <hr class="star-light">
+                    <hr class="star-primary">
                 </div>
             </div>
             <div class="row">
@@ -140,12 +183,12 @@
     </section>
 
     <!-- board Section -->
-    <section id="board">
+    <section class="success" id="board">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>Board</h2>
-                    <hr class="star-primary">
+                    <hr class="star-light">
                 </div>
                 <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-left">
