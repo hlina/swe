@@ -84,7 +84,7 @@
                 </button>
                 <ul class = "navbar-nav">
                 <li><img class="img-responsive" id = "logo" src="img/logo.png" alt="" height = "80px" width = "80px"></li>
-                <li><a class="navbar-brand" href="swe.html">Penn SWE</a></li>
+                <li><a class="navbar-brand" href="index.php">Penn SWE</a></li>
                 </ul>
             </div>
 
@@ -96,28 +96,28 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="swe.html" data-toggle="dropdown" class="dropdown-toggle">ABOUT<b class="caret"></b></a>
+                        <a href="index.php" data-toggle="dropdown" class="dropdown-toggle">ABOUT<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li class="page-scroll"><a href="swe.html#about">Vision</a></li>
-                            <li class="page-scroll"><a href="swe.html#board">Board</a></li>
+                            <li class="page-scroll"><a href="index.php#about">Vision</a></li>
+                            <li class="page-scroll"><a href="index.php#board">Board</a></li>
                         </ul>
                     </li>
                     <li class="page-scroll">
-                        <a href="events.html" data-toggle="dropdown" class="dropdown-toggle">EVENTS<b class="caret"></b></a>
+                        <a href="events.php" data-toggle="dropdown" class="dropdown-toggle">EVENTS<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li class="page-scroll"><a href="events.html#calendar">Upcoming Events</a></li>
-                            <li class="page-scroll"><a href="events.html#programs">Annual Events</a></li>
+                            <li class="page-scroll"><a href="events.php#calendar">Upcoming Events</a></li>
+                            <li class="page-scroll"><a href="events.php#programs">Annual Events</a></li>
                         </ul>
                     </li>
                     <li class="page-scroll">
-                        <a href="events.html" data-toggle="dropdown" class="dropdown-toggle">GET INVOLVED<b class="caret"></b></a>
+                        <a href="events.php" data-toggle="dropdown" class="dropdown-toggle">GET INVOLVED<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li class="page-scroll"><a href="getinvolved.html#subscribe">Join Listserve</a></li>
-                            <li class="page-scroll"><a href="getinvolved.html#sponsorship">Committees</a></li>
+                            <li class="page-scroll"><a href="getinvolved.php#subscribe">Join Listserve</a></li>
+                            <li class="page-scroll"><a href="getinvolved.php#sponsorship">Committees</a></li>
                         </ul>
                     </li>
                     <li class="page-scroll">
-                        <a href="contact.html">SPONSORSHIP</a>
+                        <a href="contact.php">SPONSORSHIP</a>
                     </li>
                     <li class = "page-scroll">
                         <a href="#" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-search"></span> Sign In</a>
@@ -136,7 +136,7 @@
                 <div class="col-lg-12">
                     <div class="intro-text">
                     <center>
-                        <img name="slideImg" src="Love.jpg" width=500 height=375 border=0>
+                        <img name="slideImg" src="img/Love.jpg" width=500 height=375 border=0>
                         </br>
                         <a onClick="prevImage('slideImg'); clearTimeout(timerID)"> previous</a>
                         <a onClick="switchImage('slideImg'); clearTimeout(timerID)">next </a>
@@ -211,11 +211,11 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Penn SWE</h3>
-                        <a href = "swe.html#about">About</a><br>
-                        <a href = "swe.html#board">Board</a><br>
-                        <a href = "events.html">Events</a><br>
-                        <a href = "getinvolved.html">Get Involved</a><br>
-                        <a href = "contact.html">Contact Us</a>
+                        <a href = "index.php#about">About</a><br>
+                        <a href = "index.php#board">Board</a><br>
+                        <a href = "events.php">Events</a><br>
+                        <a href = "getinvolved.php">Get Involved</a><br>
+                        <a href = "contact.php">Contact Us</a>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
