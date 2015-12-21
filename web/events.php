@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
 
@@ -31,45 +29,6 @@
 
 </head>
 
-    <!-- Slideshow -->
-    <script type="text/javascript">
-    var interval = 3500;
-    var imageDir = "";
-
-    var imageNum = 0;
-    imageArray = new Array();
-    imageArray[imageNum++] = new imageItem(imageDir + "Love.jpg");
-    imageArray[imageNum++] = new imageItem(imageDir + "pic.jpg");
-    var totalImages = imageArray.length;
-    function imageItem(image_location) {
-        this.image_item = new Image();
-        this.image_item.src = image_location;
-    }
-    function get_ImageItemLocation(imageObj) {
-        return(imageObj.image_item.src);
-    }
-
-    function getNextImage() {
-        imageNum = (imageNum+1) % totalImages;
-        var new_image = get_ImageItemLocation(imageArray[imageNum]);
-        return(new_image);
-    }   
-    function getPrevImage() {
-        imageNum = (imageNum-1) % totalImages;
-        var new_image = get_ImageItemLocation(imageArray[imageNum]);
-        return(new_image);
-    }
-    function prevImage(place) {
-        var new_image = getPrevImage();
-        document[place].src = new_image;
-    }
-    function switchImage(place) {
-        var new_image = getNextImage();
-        document[place].src = new_image;
-        var recur_call = "switchImage('"+place+"')";
-        timerID = setTimeout(recur_call, interval);
-    }
-    </script>
 
 <body id="page-top" class="index">
 
@@ -89,7 +48,6 @@
                 <li><a class="navbar-brand" href="swe.html">Penn SWE</a></li>
                 </ul>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <br>
@@ -98,9 +56,9 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="swe.html" data-toggle="dropdown" class="dropdown-toggle">HOME<b class="caret"></b></a>
+                        <a href="swe.html" data-toggle="dropdown" class="dropdown-toggle">ABOUT<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li class="page-scroll"><a href="swe.html#about">About</a></li>
+                            <li class="page-scroll"><a href="swe.html#about">Vision</a></li>
                             <li class="page-scroll"><a href="swe.html#board">Board</a></li>
                         </ul>
                     </li>
@@ -108,18 +66,18 @@
                         <a href="events.html" data-toggle="dropdown" class="dropdown-toggle">EVENTS<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="page-scroll"><a href="events.html#calendar">Upcoming Events</a></li>
-                            <li class="page-scroll"><a href="events.html#programs">Programming</a></li>
+                            <li class="page-scroll"><a href="events.html#programs">Annual Events</a></li>
                         </ul>
                     </li>
                     <li class="page-scroll">
                         <a href="events.html" data-toggle="dropdown" class="dropdown-toggle">GET INVOLVED<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li class="page-scroll"><a href="getinvolved.html#subscribe">Subscribe</a></li>
-                            <li class="page-scroll"><a href="getinvolved.html#sponsorship">Sponsorship</a></li>
+                            <li class="page-scroll"><a href="getinvolved.html#subscribe">Join Listserve</a></li>
+                            <li class="page-scroll"><a href="getinvolved.html#sponsorship">Committees</a></li>
                         </ul>
                     </li>
                     <li class="page-scroll">
-                        <a href="contact.html">CONTACT US</a>
+                        <a href="contact.html">SPONSORSHIP</a>
                     </li>
                     <li class = "page-scroll">
                         <a href="#" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-search"></span> Sign In</a>
@@ -130,77 +88,60 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
     <!-- Pictures Section -->
     <header>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                    <center>
-                        <img name="slideImg" src="Love.jpg" width=500 height=375 border=0>
-                        </br>
-                        <a onClick="prevImage('slideImg'); clearTimeout(timerID)"> previous</a>
-                        <a onClick="switchImage('slideImg'); clearTimeout(timerID)">next </a>
-                    </center>
+                        <span class="name"></span>
+                        <hr class="star-light">
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center intro-text">
-                    <h2>About</h2>
-                    <hr class="star-primary">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-left">
-                   <p>The Society of Women Engineers (SWE) is a non-profit service organization aimed at informing the community of the qualifications and achievements of women engineers. Its mission is to stimulate women to achieve their full potential in their careers as engineers and as leaders, to expand the image of the engineering profession as a positive force in improving the quality of life, and to demonstrate the value of diversity. <br>
-                    
-                    The University of Pennsylvania Student Chapter has three primary objectives: professional development, education outreach to local high school and elementary schools, and social activities for its members.<br>
-
-                    If you would like to find out more information about the Society of Women Engineers, please visit the national SWE website (refer to Resources page). There you can also find out how to apply for paid membership to the national organization.</p>
-                    <p>Mission Statement: <br>
-                    i) To stimulate women to achieve full potential in careers as engineers and leaders.<br>
-                    ii) To expand the image of the engineering profession as a positive force in improving the quality of life.<br>
-                    iii) To demonstrate the value of diversity.</p>
-                </div>
-            </div>
-        </div>
-        <div id = "outstanding">
-            <table>
-            <tr>
-                <td><img class="img-responsive center" src="img/outstanding1.png" alt="" height = "150px" width = "200px"></td>
-                <td><img class="img-responsive center" src="img/outstanding2.png" alt="" height = "150px" width = "200px"></td>
-            </tr>
-            </table>
-        </div>
-    </section>
-
-    <!-- board Section -->
-    <section class="success" id="board">
+    <!-- calendar Section -->
+    <section class="success" id="calendar">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Board</h2>
+                    <h2>Upcoming Events</h2>
                     <hr class="star-light">
+                </div>
+                <center><iframe src="https://www.google.com/calendar/b/0/embed?title=Penn%20SWE&amp;height=360&amp;wkst=1&amp;bgcolor=%23f2f0f0&amp;src=pennswe%40gmail.com&amp;color=%237A367A&amp;ctz=America%2FNew_York" style=" border-width:0 " width="700" height="500" frameborder="0" scrolling="no"></iframe></center>
+        </div>
+    </section>
+
+    <!-- Programming Section -->
+    <section id="programs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Programming</h2>
+                    <hr class="star-primary">
                 </div>
                 <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-left">
-                   <p>The Society of Women Engineers (SWE) is a non-profit service organization aimed at informing the community of the qualifications and achievements of women engineers. Its mission is to stimulate women to achieve their full potential in their careers as engineers and as leaders, to expand the image of the engineering profession as a positive force in improving the quality of life, and to demonstrate the value of diversity. <br>
-                    
-                    The University of Pennsylvania Student Chapter has three primary objectives: professional development, education outreach to local high school and elementary schools, and social activities for its members.<br>
-
-                    If you would like to find out more information about the Society of Women Engineers, please visit the national SWE website (refer to Resources page). There you can also find out how to apply for paid membership to the national organization.</p>
-                    <p>Mission Statement: <br>
-                    i) To stimulate women to achieve full potential in careers as engineers and leaders.<br>
-                    ii) To expand the image of the engineering profession as a positive force in improving the quality of life.<br>
-                    iii) To demonstrate the value of diversity.</p>
+                    <a href="#" rel="toggle[events]" style= "color:gray"><h3>Events</h3></a>
+                    <div id="events">
+                        <p>
+                            <ul>
+                                <li>
+                                    <a href="http://societyofwomenengineers.swe.org/index.php/scholarships" target="_blank">National SWE Scholarship</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.vpul.upenn.edu/careerservices/wharton/apps/LehmanVisionScholarship07.pdf" target="_blank">
+                                    Lehman Brothers Vision Scholarship</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.sms.scholarshipamerica.org/vanguardwomenintechnology/" target="_blank">
+                                    The Vanguard Women in Technology Scholarship Program</a>
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -259,5 +200,3 @@
     <script src="js/freelancer.js"></script>
 
 </body>
-
-</html>
