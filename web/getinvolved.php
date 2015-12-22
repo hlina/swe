@@ -74,8 +74,8 @@
                     <li class="page-scroll">
                         <a href="events.php" data-toggle="dropdown" class="dropdown-toggle">GET INVOLVED<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li class="page-scroll"><a href="getinvolved.php#subscribe">Join Listserve</a></li>
-                            <li class="page-scroll"><a href="getinvolved.php#sponsorship">Committees</a></li>
+                            <li class="page-scroll"><a href="getinvolved.php#subscribe">Committees</a></li>
+                            <li class="page-scroll"><a href="getinvolved.php#sponsorship">Join Listserve</a></li>
                         </ul>
                     </li>
                     <li class="page-scroll">
@@ -110,31 +110,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center intro-text">
-                    <h2>Subscribe</h2>
+                    <h2>Committees</h2>
                     <hr class="star-light">
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-left">
-                   <p>The Society of Women Engineers (SWE) is a non-profit service organization aimed at informing the community of the qualifications and achievements of women engineers. Its mission is to stimulate women to achieve their full potential in their careers as engineers and as leaders, to expand the image of the engineering profession as a positive force in improving the quality of life, and to demonstrate the value of diversity. <br>
-                    
-                    The University of Pennsylvania Student Chapter has three primary objectives: professional development, education outreach to local high school and elementary schools, and social activities for its members.<br>
-
-                    If you would like to find out more information about the Society of Women Engineers, please visit the national SWE website (refer to Resources page). There you can also find out how to apply for paid membership to the national organization.</p>
-                    <p>Mission Statement: <br>
-                    i) To stimulate women to achieve full potential in careers as engineers and leaders.<br>
-                    ii) To expand the image of the engineering profession as a positive force in improving the quality of life.<br>
-                    iii) To demonstrate the value of diversity.</p>
-                </div>
-            </div>
-        </div>
-        <div id = "outstanding">
-            <table>
-            <tr>
-                <td><img class="img-responsive center" src="img/outstanding1.png" alt="" height = "150px" width = "200px"></td>
-                <td><img class="img-responsive center" src="img/outstanding2.png" alt="" height = "150px" width = "200px"></td>
-            </tr>
-            </table>
         </div>
     </section>
 
@@ -143,21 +123,47 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Sponsorship</h2>
+                    <h2>Join Listserve</h2>
                     <hr class="star-primary">
                 </div>
                 <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-left">
-                   <p>The Society of Women Engineers (SWE) is a non-profit service organization aimed at informing the community of the qualifications and achievements of women engineers. Its mission is to stimulate women to achieve their full potential in their careers as engineers and as leaders, to expand the image of the engineering profession as a positive force in improving the quality of life, and to demonstrate the value of diversity. <br>
-                    
-                    The University of Pennsylvania Student Chapter has three primary objectives: professional development, education outreach to local high school and elementary schools, and social activities for its members.<br>
-
-                    If you would like to find out more information about the Society of Women Engineers, please visit the national SWE website (refer to Resources page). There you can also find out how to apply for paid membership to the national organization.</p>
-                    <p>Mission Statement: <br>
-                    i) To stimulate women to achieve full potential in careers as engineers and leaders.<br>
-                    ii) To expand the image of the engineering profession as a positive force in improving the quality of life.<br>
-                    iii) To demonstrate the value of diversity.</p>
-                </div>
+            <!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+    /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="//upenn.us9.list-manage.com/subscribe/post?u=7029c517c841f224227a175ea&amp;id=b0172d234e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+    <h2>Subscribe to our mailing list </h2>
+<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+    <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+<div class="mc-field-group">
+    <label for="mce-FNAME">First Name </label>
+    <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+</div>
+<div class="mc-field-group">
+    <label for="mce-LNAME">Last Name </label>
+    <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+</div>
+    <div id="mce-responses" class="clear">
+        <div class="response" id="mce-error-response" style="display:none"></div>
+        <div class="response" id="mce-success-response" style="display:none"></div>
+    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_7029c517c841f224227a175ea_b0172d234e" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->
+            </div>
             </div>
         </div>
     </section>
