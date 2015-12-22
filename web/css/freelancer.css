@@ -518,3 +518,11 @@ footer .footer-below {
     display: none;
     opacity: 0;
 }
+.events {
+    width: 100%;
+    margin-top: 10px;
+    margin-right: 40px;
+}
+.panel-body {
+    height: 350px;
+}

@@ -112,7 +112,19 @@
                     <h2>Upcoming Events</h2>
                     <hr class="star-light">
                 </div>
-                <center><iframe src="https://www.google.com/calendar/b/0/embed?title=Penn%20SWE&amp;height=360&amp;wkst=1&amp;bgcolor=%23f2f0f0&amp;src=pennswe%40gmail.com&amp;color=%237A367A&amp;ctz=America%2FNew_York" style=" border-width:0 " width="700" height="500" frameborder="0" scrolling="no"></iframe></center>
+                <center><table width="800">
+                <tr>
+                <td><center><iframe src="https://www.google.com/calendar/b/0/embed?title=Penn%20SWE&amp;height=360&amp;wkst=1&amp;bgcolor=%23f2f0f0&amp;src=pennswe%40gmail.com&amp;color=%237A367A&amp;ctz=America%2FNew_York" style=" border-width:0 " width="600" height="400 " frameborder="0" scrolling="no"></iframe></center>
+                </td>
+                <td> 
+                    <div class="events">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Details</div>
+                                <div class="panel-body" style="min-height: 10; overflow-y: scroll; max-height: 10;">Panel Content</div>
+                            </div>
+                    </div>
+                </td>
+            </table></center>
         </div>
     </section>
 
