@@ -119,32 +119,32 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form name="sentMessage" id="contactForm" action="mail/contact_me.php" method="POST" novalidate>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Name</label>
-                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                <input type="text" class="form-control" placeholder="Name" id="name" name = "name" required data-validation-required-message="Please enter your name.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Email Address</label>
-                                <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+                                <input type="email" class="form-control" placeholder="Email Address" id="email" name = "email" required data-validation-required-message="Please enter your email address.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Organization</label>
-                                <input type="text" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your organization name.">
+                                <input type="text" class="form-control" placeholder="Phone Number" id="phone" name = "phone" required data-validation-required-message="Please enter your organization name.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Message</label>
-                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <textarea rows="5" class="form-control" placeholder="Message" id="message" name = "message" required data-validation-required-message="Please enter a message."></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -157,33 +157,6 @@
                         </div>
                     </form>
                 </div>
-                <?php
-                    echo "HERE"
-                    // Check for empty fields
-                    if(empty($_POST['name'])        ||
-                       empty($_POST['email'])       ||
-                       empty($_POST['phone'])       ||
-                       empty($_POST['message']) ||
-                       !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
-                       {
-                        echo "No arguments Provided!";
-                        return false;
-                       }
-                        
-                    $name = $_POST['name'];
-                    $email_address = $_POST['email'];
-                    $phone = $_POST['phone'];
-                    $message = $_POST['message'];
-                        
-                    // Create the email and send the message
-                    $to = 'linahuang94@gmail.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
-                    $email_subject = "Website Contact Form:  $name";
-                    $email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\Organization: $phone\n\nMessage:\n$message";
-                    $headers = "From: noreply@yourdomain.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
-                    $headers .= "Reply-To: $email_address"; 
-                    mail($to,$email_subject,$email_body,$headers);
-                    return true;            
-                ?>
             </div>
         </div>
     </section>
