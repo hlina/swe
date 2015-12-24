@@ -30,20 +30,12 @@
     <![endif]-->
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-    <script src="form.js"></script>
-    <link rel="stylesheet" type="text/css" href="menu.css">
+
 </head>
 
 
     <script type="text/javascript">
-            $(document).ready(function() {
-            $('#logform').hide();
-            $('#signin').click(function() {
-                $('#logform').show();
-            });
-            $("#cancel").click(function() {
-                $('#logform').hide();
-            });
+        $(document).ready(function() {
             $("#submitted").click(function() {
                 var x=document.forms["login-form"][0].value;
                 var seas1 = x.indexOf("seas.upenn.edu");
@@ -51,26 +43,6 @@
                 var seas2 = y.indexOf("seas.upenn.edu");
                 if ((x==null || x=="" || seas1 == -1)&&(y==null || y=="" || seas2 == -1)){
                     alert("Please fill out the email field with your SEAS email.");
-                }
-            });
-            $('#cssmenu > ul:has(li)').addClass("has-sub");
-            $('#cssmenu > ul > li > a').click(function() {
-                var checkElement = $(this).next();
-                $('#cssmenu li').removeClass('active');
-                $(this).closest('li').addClass('active');   
-
-                if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
-                    $(this).closest('li').removeClass('active');
-                    checkElement.slideUp('normal');
-                }
-                if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
-                    $('#cssmenu ul ul:visible').slideUp('normal');
-                    checkElement.slideDown('normal');
-                }
-                if (checkElement.is('ul')) {
-                    return false;
-                } else {
-                    return true;    
                 }
             });
         });
@@ -150,6 +122,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
+                        <span class="name"></span>
                         <form name="login-form" class="form-horizontal" id = "logform" method="post" action="login.php">
                         <ul class="nav nav-tabs">
                         <li class="active"><a href="#info-tab" data-toggle="tab">Returning Member<i class="fa"></i></a></li>
@@ -179,104 +152,73 @@
                         </div>
                         <div class="form-group" style="margin-top: 15px;">
                             <div class="col-xs-5 col-xs-offset-3">
-                                <a href = "#" class="btn btn-default" id = "cancel">Cancel</a>
+                                <a href = "contact.php" class="btn btn-default" id = "cancel">Cancel</a>
                                 <button type="submit" class="btn btn-default" id = "submitted">Submit</button>
                             </div>
                         </div>
                     </form>
+                        <h1>Sponsors</h1>
                         <hr class="star-light">
-                        <h2>Follow us on social media for events</h2>
-                        <ul class="list-inline">
-                            <li>
-                                <a href="https://www.facebook.com/upenn.sweundergrad?fref=ts" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/intent/follow?screen_name=PennSWE" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                        </ul>
+                        <p> There are many opportunities for involvement with the University of Pennsylvania Chapter of the Society of Women Engineers. Our organization has set viable goals for our women engineering student body this coming year and your contribution will help us reach our vision. Opportunites include sponsorship of the annual corporate dinner, general body meetings, or GEARS day for educational outreach. Please contact us below if your company is at all interested in working with Penn SWE.</p>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- calendar Section -->
-    <section id="calendar">
+    <!-- Contact Section -->
+    <section id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Upcoming Events</h2>
+                    <h2>Email Us</h2>
                     <hr class="star-primary">
                 </div>
-                <center><table width="800">
-                <tr>
-                <td><center><iframe src="https://www.google.com/calendar/b/0/embed?title=Penn%20SWE&amp;height=360&amp;wkst=1&amp;bgcolor=%23f2f0f0&amp;src=pennswe%40gmail.com&amp;color=%237A367A&amp;ctz=America%2FNew_York" style=" border-width:0 " width="600" height="400 " frameborder="0" scrolling="no"></iframe></center>
-                </td>
-                <td> 
-                    <div class="events">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Details</div>
-                                <div class="panel-body" style="min-height: 10; overflow-y: none; max-height: 10;">On winter break, coming soon</div>
-                            </div>
-                    </div>
-                </td>
-            </table></center>
-        </div>
-    </section>
-
-    <!-- Programming Section -->
-    <section id="programs" class="success">
-        <div class="container">
+            </div>
             <div class="row">
-                
-                <div class="col-lg-12 text-center">
-                    <h2>Programming</h2>
-                    <hr class="star-light">
-                </div>
-                <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-left">
-                    <div class="menu" id = "cssmenu">
-                        <ul class="menu">
-                            <li class="menu"><a href="#"><span>Corporate Dinner</span></a>
-                                <ul class="menu">
-                                    <li class="menu"> The Society of Women Engineers Corporate Dinner is the largest annual student-run corporate event in the School of Engineering and Applied Science. Each year we invite organizations to send representatives to this event held at the University of Pennsylvania. More than 150 undergraduates and graduates attend and have the opportunity to speak with representatives during a reception and dinner about internship opportunities and full-time positions. Students attending the dinner will submit their resumes to the online resume book which will be accessible to all representatives prior to the dinner. The 19th Annual Corporate Dinner will be on Monday, October 26th, 2015 from 6-9 PM at the Inn at Penn.
-                                    <br>
-                                    <br>
-                                    Questions? Please contact swecorporatedinner15@gmail.com 
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu"><a href="#"><span>Educational Outreach</span></a>
-                                <ul class="menu">
-                                    <li class="menu">
-                                        <h3>GEARS Day</h3>
-                                        <br>
-                                        GEARS Day (Girls in Engineering and Related Sciences) is a program run by Penn SWE with the help of Philadelphia SWE to encourage high school girls to develop an interest in engineering by attending a mini day camp on Penn's engineering campus. This one-day event for high school girls in the Philadelphia area, specifically sophomores and juniors, will take place this spring. During the event, the girls will participate in a series of hands-on workshops designed to give them a taste of several various engineering and scientific disciplines. The goal is to interest the high school girls in pursuing engineering in college. Aside from the workshops, the day includes a student panel and a lunch where the girls can mingle with current students, faculty, and Philadelphia SWE volunteers. 
-                                        <br>
-                                        <br>
-                                        <h3>High School Shadowing Day</h3>
-                                        <br>
-                                        In keeping with our mission to encourage young people, especially young women, to explore engineering as a possible career, we invite groups of high school students to come to Penn and learn about being in college and more importantly, studying engineering. Each high school student shadows a SWE member to a few classes and between classes, has time to ask questions about student life at Penn. We also have a speaker who has had great success in an engineering field to share her experiences with both the college and high school students.
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="menu"><a href="#"><span>Activities</span></a>
-                                <ul class="menu">
-                                    <li class="menu">Penn SWE holds many professional development for networking as well as social events for students to get together and meet other SWE members. We hold dinners where company representatives give presentations and answer questions about applying for internships. Our social activities include study breaks, including the annual "Get to Know SWE S'More" event.
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-                    
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                        <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Organization</label>
+                                <input type="text" class="form-control" placeholder="Organization" id="phone" required data-validation-required-message="Please enter your organization.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Message</label>
+                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-
-
 
     <!-- Footer -->
     <footer class="text-center">

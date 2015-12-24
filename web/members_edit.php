@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?php session_start(); ?>
+    <?php session_start();?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,24 +28,32 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!-- jQuery -->
+        <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
 </head>
 
-
+    <!-- Slideshow -->
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#logform').hide();
-            $('#signin').click(function() {
-                window.location.assign("contact2.php");
-            });
-            $("#cancel").click(function() {
-                $('#logform').hide();
-            });
+    $(document).ready(function() {
+        $('#logform').hide();
+        $('#signin').click(function() {
+            $('#logform').show();
         });
+        $("#cancel").click(function() {
+            $('#logform').hide();
+        });
+        $("#submitted").click(function() {
+            var x=document.forms["login-form"]["email"].value;
+            var seas = x.indexOf("seas.upenn.edu")
+            if (x==null || x=="" || seas == -1){
+                alert("Please fill out the email field with your SEAS email.");
+            }
+            else {
+                window.location.assign("https://fling.seas.upenn.edu/~swe/cgi-bin/temp/members/member.php");
+            }
+        });
+    });
     </script>
-
 
 <body id="page-top" class="index">
 
@@ -98,10 +106,10 @@
                     <li class="page-scroll">
                         <a href="contact.php">SPONSORSHIP</a>
                     </li>
-                    <li class = "page-scroll">
+                    <li class = "">
                     <?php
                     if(isset($_SESSION['user'])) {?>
-                        <a href="members.php" class="btn btn-info btn-xs" id = "member"><span class="glyphicon glyphicon-search"></span>Member Page</a>
+                        <a href="https://weblogin.pennkey.upenn.edu/logout" class="btn btn-info btn-xs" id = "member"><span class="glyphicon glyphicon-search"></span>Sign out</a>
                     <? }
                     else {?>
                         <a href="#" class="btn btn-info btn-xs" id = "signin"><span class="glyphicon glyphicon-search"></span> Sign In</a>
@@ -114,77 +122,102 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <span class="name"></span>
-                        <h1>Sponsors</h1>
+                        <h3>Account for: <? echo $_SESSION['user']['email'] ?></h3>
                         <hr class="star-light">
-                        <p> There are many opportunities for involvement with the University of Pennsylvania Chapter of the Society of Women Engineers. Our organization has set viable goals for our women engineering student body this coming year and your contribution will help us reach our vision. Opportunites include sponsorship of the annual corporate dinner, general body meetings, or GEARS day for educational outreach. Please contact us below if your company is at all interested in working with Penn SWE.</p>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Contact Section -->
-    <section id="contact">
+    <section>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Email Us</h2>
-                    <hr class="star-primary">
-                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-left">
+        <?php 
+        if (isset($_SESSION['user'])) {
+            
+        ?>
+            <!-- main content -->
+            <h2>Edit your account:</h2>
+            
+            <div>
+            <?
+            if (isset($_POST['submit'])) {
+                include("open_db.php");
+                $result = mysql_query("SELECT * FROM Person WHERE ID='" . $_SESSION['user']['ID'] . "'");
+                if (mysql_num_rows($result) != 0) {
+                        $query = "UPDATE Person SET major='" . $_POST['major'] . "', year='" . $_POST['year'] . "' WHERE ID='" . $_SESSION['user']['ID'] . "'";
+                }   
+                
+                mysql_query($query) or die('Error, query failed');
+                
+                // reset the result so updated to the updated person
+                $result = mysql_query("SELECT * FROM Person WHERE ID='" . $_SESSION['user']['ID'] . "'");
+                $_SESSION['user'] = mysql_fetch_array($result);
+                
+                include("close_db.php");
+                echo '<META HTTP-EQUIV="Refresh" Content="0; URL=https://fling.seas.upenn.edu/~swe/cgi-bin/members.php">';
+                //header('Location:  members.php');
+                //exit();
+            }
+            ?>
+                <h3>Profile: </h3>
+                <form name="editform" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" onsubmit="return validateMajorYear();">
+                    <table width="500px">
+                    <tr>
+                        <td valign="top" width="50px">
+                            Major:
+                        </td>
+                        <td width="400px" valign="top">
+                            <input class="radio" type="radio" name="major" value="BE" <? if ($_SESSION['user']['major'] == 'BE'){ ?>checked<? } ?>>Bioengineering <br/>
+                            <input class="radio" type="radio" name="major" value="CBE" <? if ($_SESSION['user']['major'] == 'CBE'){ ?>checked<? } ?>>Chemical Biomolecular Engineering <br/>
+                            <input class="radio" type="radio" name="major" value="MEAM" <? if ($_SESSION['user']['major'] == 'MEAM'){ ?>checked<? } ?>>Mechanical Engineering<br/>
+                            <input class="radio" type="radio" name="major" value="MSE" <? if ($_SESSION['user']['major'] == 'MSE'){ ?>checked<? } ?>>Materials Science<br/>
+                            <input class="radio" type="radio" name="major" value="SYS" <? if ($_SESSION['user']['major'] == 'SYS'){ ?>checked<? } ?>>Systems Engineering<br>
+                            <input class="radio" type="radio" name="major" value="CD" <? if ($_SESSION['user']['major'] == 'CD'){ ?>checked<? } ?>>Curriculum Deferred<br/>
+                        </td>
+                        <td width="400px" valign="top">
+                            <input class="radio" type="radio" name="major" value="CIS" <? if ($_SESSION['user']['major'] == 'CIS'){ ?>checked<? } ?>>Computer Science <br/>
+                            <input class="radio" type="radio" name="major" value="DMD" <? if ($_SESSION['user']['major'] == 'DMD'){ ?>checked<? } ?>>Digital Media Design <br/>
+                            <input class="radio" type="radio" name="major" value="EE" <? if ($_SESSION['user']['major'] == 'EE'){ ?>checked<? } ?>>Electrical Engineering <br/>
+                            <input class="radio" type="radio" name="major" value="MKSE" <? if ($_SESSION['user']['major'] == 'MKSE'){ ?>checked<? } ?>>Marketing and Social Systems Engineering <br/>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="20px">
+                            Year:
+                        </td>
+                        <td width="70px" valign="top">
+                            <input class="radio" type="radio" name="year" value="2013" <? if ($_SESSION['user']['year'] == '2013'){ ?>checked<? } ?>>2013 <br/>
+                            <input class="radio" type="radio" name="year" value="2014" <? if ($_SESSION['user']['year'] == '2014'){ ?>checked<? } ?>>2014 <br/>
+                            <input class="radio" type="radio" name="year" value="Grad" <? if ($_SESSION['user']['year'] == 'Grad'){ ?>checked<? } ?>>Grad <br/>
+                        </td>
+                        <td width="80px" valign="top">
+                            <input class="radio" type="radio" name="year" value="2015" <? if ($_SESSION['user']['year'] == '2015'){ ?>checked<? } ?>>2015 <br/>
+                            <input class="radio" type="radio" name="year" value="2016" <? if ($_SESSION['user']['year'] == '2012'){ ?>checked<? } ?>>2016 <br/>
+                            <input class="radio" type="radio" name="year" value="Alumnus" <? if ($_SESSION['user']['year'] == 'Alumnus'){ ?>checked<? } ?>>Alumnus <br/>
+                        </td>
+                    </tr>
+                    </table>
+                    <br/>
+                    <input class="join" name="submit" value="submit" type="submit">
+                </form>
             </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                        <form name="sentMessage" id="contactForm" novalidate>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Name</label>
-                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Email Address</label>
-                                <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Organization</label>
-                                <input type="text" class="form-control" placeholder="Organization" id="phone" required data-validation-required-message="Please enter your organization.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Message</label>
-                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <br>
-                        <div id="success"></div>
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <button type="submit" id = "contacted" class="btn btn-success btn-lg">Send</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <?
+        }
+        ?>
+         </div>
+        </div>
         </div>
     </section>
-
+   
     <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">
@@ -195,7 +228,7 @@
                         <a href = "index.php">About</a><br>
                         <a href = "events.php">Events</a><br>
                         <a href = "getinvolved.php">Get Involved</a><br>
-                        <a href = "contact.php">Sponsorship</a>
+                        <a href = "contact.php">Contact Us</a>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>

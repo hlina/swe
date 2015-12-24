@@ -28,58 +28,38 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!-- jQuery -->
+        <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <script src="form.js"></script>
-    <link rel="stylesheet" type="text/css" href="menu.css">
+
 </head>
 
-
+    <!-- Slideshow -->
     <script type="text/javascript">
-            $(document).ready(function() {
-            $('#logform').hide();
-            $('#signin').click(function() {
-                $('#logform').show();
-            });
-            $("#cancel").click(function() {
-                $('#logform').hide();
-            });
-            $("#submitted").click(function() {
-                var x=document.forms["login-form"][0].value;
-                var seas1 = x.indexOf("seas.upenn.edu");
-                var y = document.forms["login-form"][1].value;
-                var seas2 = y.indexOf("seas.upenn.edu");
-                if ((x==null || x=="" || seas1 == -1)&&(y==null || y=="" || seas2 == -1)){
-                    alert("Please fill out the email field with your SEAS email.");
-                }
-            });
-            $('#cssmenu > ul:has(li)').addClass("has-sub");
-            $('#cssmenu > ul > li > a').click(function() {
-                var checkElement = $(this).next();
-                $('#cssmenu li').removeClass('active');
-                $(this).closest('li').addClass('active');   
-
-                if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
-                    $(this).closest('li').removeClass('active');
-                    checkElement.slideUp('normal');
-                }
-                if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
-                    $('#cssmenu ul ul:visible').slideUp('normal');
-                    checkElement.slideDown('normal');
-                }
-                if (checkElement.is('ul')) {
-                    return false;
-                } else {
-                    return true;    
-                }
-            });
+    $(document).ready(function() {
+        $('#logform').hide();
+        $('#signin').click(function() {
+            $('#logform').show();
         });
+        $("#cancel").click(function() {
+            $('#logform').hide();
+        });
+        $("#signout").click(function() {
+            window.location.replace("logout.php");
+        });
+        $("#submitted").click(function() {
+            var x=document.forms["login-form"][0].value;
+            var seas1 = x.indexOf("seas.upenn.edu");
+            var y = document.forms["login-form"][1].value;
+            var seas2 = y.indexOf("seas.upenn.edu");
+            if ((x==null || x=="" || seas1 == -1)&&(y==null || y=="" || seas2 == -1)){
+                alert("Please fill out the email field with your SEAS email.");
+            }
+        });
+    });
     </script>
 
-
 <body id="page-top" class="index">
-
-
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -128,10 +108,10 @@
                     <li class="page-scroll">
                         <a href="contact.php">SPONSORSHIP</a>
                     </li>
-                    <li class = "page-scroll">
+                    <li class = "">
                     <?php
                     if(isset($_SESSION['user'])) {?>
-                        <a href="members.php" class="btn btn-info btn-xs" id = "member"><span class="glyphicon glyphicon-search"></span>Member Page</a>
+                        <a href="#" class="btn btn-info btn-xs" id = "signout"><span class="glyphicon glyphicon-search"></span> Sign Out</a>
                     <? }
                     else {?>
                         <a href="#" class="btn btn-info btn-xs" id = "signin"><span class="glyphicon glyphicon-search"></span> Sign In</a>
@@ -144,12 +124,19 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
+                        <h3>Account for: <? echo $_SESSION['user']['email'] ?></h3>
+                        <hr class="star-light">
+                        <?if ($_SESSION['user']['is_admin']){?>
+                            <a href="admin.php" class="btn btn-default">Admin Page</a>
+                            <a href=https://docs.google.com/forms/d/1KJGq2kIB5_nTM1F8v0iTD1DbwHi64exKlWPkB9utoDw/viewform?usp=send_form class="btn btn-default">Attendance Form</a>
+                        <?} else if($_SESSION['user']['is_board']) {?>
+                            <a href=https://docs.google.com/forms/d/1KJGq2kIB5_nTM1F8v0iTD1DbwHi64exKlWPkB9utoDw/viewform?usp=send_form class="btn btn-default">Attendance Form</a>
+                        <?}?>
                         <form name="login-form" class="form-horizontal" id = "logform" method="post" action="login.php">
                         <ul class="nav nav-tabs">
                         <li class="active"><a href="#info-tab" data-toggle="tab">Returning Member<i class="fa"></i></a></li>
@@ -184,100 +171,132 @@
                             </div>
                         </div>
                     </form>
-                        <hr class="star-light">
-                        <h2>Follow us on social media for events</h2>
-                        <ul class="list-inline">
-                            <li>
-                                <a href="https://www.facebook.com/upenn.sweundergrad?fref=ts" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/intent/follow?screen_name=PennSWE" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </header>
 
-    <!-- calendar Section -->
-    <section id="calendar">
+    <section>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Upcoming Events</h2>
-                    <hr class="star-primary">
-                </div>
-                <center><table width="800">
-                <tr>
-                <td><center><iframe src="https://www.google.com/calendar/b/0/embed?title=Penn%20SWE&amp;height=360&amp;wkst=1&amp;bgcolor=%23f2f0f0&amp;src=pennswe%40gmail.com&amp;color=%237A367A&amp;ctz=America%2FNew_York" style=" border-width:0 " width="600" height="400 " frameborder="0" scrolling="no"></iframe></center>
-                </td>
-                <td> 
-                    <div class="events">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Details</div>
-                                <div class="panel-body" style="min-height: 10; overflow-y: none; max-height: 10;">On winter break, coming soon</div>
-                            </div>
-                    </div>
-                </td>
-            </table></center>
-        </div>
-    </section>
-
-    <!-- Programming Section -->
-    <section id="programs" class="success">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-lg-12 text-center">
-                    <h2>Programming</h2>
-                    <hr class="star-light">
-                </div>
-                <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-left">
-                    <div class="menu" id = "cssmenu">
-                        <ul class="menu">
-                            <li class="menu"><a href="#"><span>Corporate Dinner</span></a>
-                                <ul class="menu">
-                                    <li class="menu"> The Society of Women Engineers Corporate Dinner is the largest annual student-run corporate event in the School of Engineering and Applied Science. Each year we invite organizations to send representatives to this event held at the University of Pennsylvania. More than 150 undergraduates and graduates attend and have the opportunity to speak with representatives during a reception and dinner about internship opportunities and full-time positions. Students attending the dinner will submit their resumes to the online resume book which will be accessible to all representatives prior to the dinner. The 19th Annual Corporate Dinner will be on Monday, October 26th, 2015 from 6-9 PM at the Inn at Penn.
-                                    <br>
-                                    <br>
-                                    Questions? Please contact swecorporatedinner15@gmail.com 
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu"><a href="#"><span>Educational Outreach</span></a>
-                                <ul class="menu">
-                                    <li class="menu">
-                                        <h3>GEARS Day</h3>
-                                        <br>
-                                        GEARS Day (Girls in Engineering and Related Sciences) is a program run by Penn SWE with the help of Philadelphia SWE to encourage high school girls to develop an interest in engineering by attending a mini day camp on Penn's engineering campus. This one-day event for high school girls in the Philadelphia area, specifically sophomores and juniors, will take place this spring. During the event, the girls will participate in a series of hands-on workshops designed to give them a taste of several various engineering and scientific disciplines. The goal is to interest the high school girls in pursuing engineering in college. Aside from the workshops, the day includes a student panel and a lunch where the girls can mingle with current students, faculty, and Philadelphia SWE volunteers. 
-                                        <br>
-                                        <br>
-                                        <h3>High School Shadowing Day</h3>
-                                        <br>
-                                        In keeping with our mission to encourage young people, especially young women, to explore engineering as a possible career, we invite groups of high school students to come to Penn and learn about being in college and more importantly, studying engineering. Each high school student shadows a SWE member to a few classes and between classes, has time to ask questions about student life at Penn. We also have a speaker who has had great success in an engineering field to share her experiences with both the college and high school students.
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="menu"><a href="#"><span>Activities</span></a>
-                                <ul class="menu">
-                                    <li class="menu">Penn SWE holds many professional development for networking as well as social events for students to get together and meet other SWE members. We hold dinners where company representatives give presentations and answer questions about applying for internships. Our social activities include study breaks, including the annual "Get to Know SWE S'More" event.
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                <center>
+                <? if(isset($_SESSION['user'])) {?>
+                    <div id="content" style="height:800px;">
+                    <div id="left"></div>
+                    <!-- main content -->
+                    <div id="main">
+                        <div class="left-content">
+                        <h3>Profile: </h3>
+                        <p>*We use this information for downloading specific resumes for companies.</p>
+                        <p>Year: <? echo $_SESSION['user']['year'] ?><br/>
+                            Major: <? echo $_SESSION['user']['major'] ?></p>
+                        <p><a href="members_edit.php">Edit this information.</a></p>
                     </div>
-
+                    <div class="right-content">
+                    <h3>Resume:</h3>
+                        <p>Current Resume: 
+                    <?php
+                    include "open_db.php";
+                    $uid = $_SESSION['user']['ID'];
+                    $query = "SELECT id, name FROM upload WHERE uid='" . $uid . "'";
+                    $result = mysql_query($query) or die('Error, query failed');
+                    if(mysql_num_rows($result) == 0) {
+                        echo "No resume uploaded.<br>";
+                    } 
+                    else {
+                        while(list($id, $name) = mysql_fetch_array($result))
+                    { ?>
+                        <a href="download.php?id=<?=$id;?>"><?=$name;?></a> <br>
+                    <?php }
+                    }
+                    include "close_db.php";
+                    ?>
+                <br/>
+                Upload new resume (PDF files only):<br/>
+                <?
+                if(isset($_SESSION['user']) && isset($_POST['upload']) && $_FILES['userfile']['size'] > 0)
+                {
+                $fileName = $_FILES['userfile']['name'];
+                $tmpName  = $_FILES['userfile']['tmp_name'];
+                $fileSize = $_FILES['userfile']['size'];
+                $fileType = $_FILES['userfile']['type'];
+                
+                if ($fileType == 'application/pdf') {
                     
+                    // check type here, need to make sure they ONLY upload pdf files
+                    $fp      = fopen($tmpName, 'r');
+                    $content = fread($fp, filesize($tmpName));
+                    $content = addslashes($content);
+                    fclose($fp);
+
+                    if(!get_magic_quotes_gpc())
+                    {
+                        $fileName = addslashes($fileName);
+                    }
+                    
+                    include("open_db.php");
+                    
+                    // rename it to the person's username
+                    // this way will prevent duplicates
+                    $fileName = str_replace("@seas.upenn.edu", "", $_SESSION['user']['email']) . ".pdf";
+                    
+                    $uid = $_SESSION['user']['ID'];
+                    
+                    $result = mysql_query("SELECT * FROM upload WHERE uid='" . $uid . "'");
+                    if (mysql_num_rows($result) != 0) {
+                        $query = "UPDATE upload SET name='" . $fileName . "', size='" . $fileSize . "', type='" . $fileType . "', content='" . $content .
+                            "' WHERE uid='" . $uid . "'";
+                    }
+                    else {
+                        $query = "INSERT INTO upload (name, size, type, content, uid ) ".
+                        "VALUES ('$fileName', '$fileSize', '$fileType', '$content', '$uid')";
+                    }
+                    
+                    mysql_query($query) or die('Error, query failed');
+
+                    include("close_db.php");
+                
+                    echo "<br><b><i>File $fileName uploaded</b></i><br>";
+                    echo '<META HTTP-EQUIV="Refresh" Content="2; URL=https://fling.seas.upenn.edu/~swe/cgi-bin/members.php">';
+                }
+                else {
+                    echo "<br><b>Incorrect file type.  Please upload only PDF files.</b><br>";
+                }
+                }
+                else {
+                ?>
+                <form class="form" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+                    <input name="userfile" class="info" type="file" id="userfile"> 
+                    <br/>
+                    <input class="join" name="upload" value="Upload" type="submit">
+                </form>
+                <? }
+                ?>
+                <p>
+                *resumes will be added to the Penn SWE<br/>
+                resume book and sent to companies for review<br/>*resumes are automatically renamed to your <br/>username to avoid duplicates
+                </p>
                 </div>
-            </div>
+                <div id="points">
+                <h3>Penn SWE Activity</h3>
+                <p><i>Get 20 points and win a prize at the end of the semester!</i></p>
+                <p>You currently have <b><?= $_SESSION['user']['num_points'] ?></b> points.</p>
+                </div>
+             <?
+             }
+             else {
+             ?>
+                <h2>Please sign in above to access this page.</h2>
+            <?
+            }
+            ?>
+             </div>
+            </center>
+        </div>
         </div>
     </section>
-
-
-
+   
     <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">
@@ -322,6 +341,7 @@
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>

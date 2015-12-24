@@ -1,14 +1,15 @@
-
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-
+    <?php session_start(); ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SWE Society of Women Engineers</title>
+    <title>Penn SWE Society of Women Engineers</title>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,11 +28,56 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <script src="form.js"></script>
+    <link rel="stylesheet" type="text/css" href="menu.css">
 
 </head>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#logform').hide();
+            $('#signin').click(function() {
+                $('#logform').show();
+            });
+            $("#cancel").click(function() {
+                $('#logform').hide();
+            });
+            $("#submitted").click(function() {
+                var x=document.forms["login-form"][0].value;
+                var seas1 = x.indexOf("seas.upenn.edu");
+                var y = document.forms["login-form"][1].value;
+                var seas2 = y.indexOf("seas.upenn.edu");
+                if ((x==null || x=="" || seas1 == -1)&&(y==null || y=="" || seas2 == -1)){
+                    alert("Please fill out the email field with your SEAS email.");
+                }
+            });
+            $('#cssmenu > ul:has(li)').addClass("has-sub");
+            $('#cssmenu > ul > li > a').click(function() {
+                var checkElement = $(this).next();
+                $('#cssmenu li').removeClass('active');
+                $(this).closest('li').addClass('active');   
+
+                if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+                    $(this).closest('li').removeClass('active');
+                    checkElement.slideUp('normal');
+                }
+                if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+                    $('#cssmenu ul ul:visible').slideUp('normal');
+                    checkElement.slideDown('normal');
+                }
+                if (checkElement.is('ul')) {
+                    return false;
+                } else {
+                    return true;    
+                }
+            });
+        });
+    </script>
 
 <body id="page-top" class="index">
+
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -82,7 +128,13 @@
                         <a href="contact.php">SPONSORSHIP</a>
                     </li>
                     <li class = "page-scroll">
-                        <a href="#" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-search"></span> Sign In</a>
+                    <?php
+                    if(isset($_SESSION['user'])) {?>
+                        <a href="members.php" class="btn btn-info btn-xs" id = "member"><span class="glyphicon glyphicon-search"></span>Member Page</a>
+                    <? }
+                    else {?>
+                        <a href="#" class="btn btn-info btn-xs" id = "signin"><span class="glyphicon glyphicon-search"></span> Sign In</a>
+                    <?}?>
                     </li>
                 </ul>
             </div>
@@ -97,8 +149,42 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <span class="name"></span>
+                        <form name="login-form" class="form-horizontal" id = "logform" method="post" action="login.php">
+                        <ul class="nav nav-tabs">
+                        <li class="active"><a href="#info-tab" data-toggle="tab">Returning Member<i class="fa"></i></a></li>
+                        <li><a href="#address-tab" data-toggle="tab">New Member<i class="fa"></i></a></li>
+                        </ul>
+                        <br>
+                        <label class="col-xs-3 control-label">Penn SEAS Email Address</label>
+                        <div class="col-xs-5">
+                            <input type="email" class="form-control" id="email" name = "email" placeholder="SEAS email">
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="info-tab">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="address-tab">
+                                <div class="form-group">
+                                </div>
+                                <div class="form-group">
+                                    <div class="radio"><label><input name="year" type="radio" value = "2016">2016</label></div>
+                                    <div class="radio"><label><input name="year" type="radio" value = "2017">2017</label></div>
+                                    <div class="radio"><label><input name="year" type="radio" value = "2018">2018</label></div>
+                                    <div class="radio"><label><input name="year" type="radio" value = "2019">2019</label></div>
+                                    <div class="radio"><label><input name="year" type="radio" value = "Other">Other</label></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 15px;">
+                            <div class="col-xs-5 col-xs-offset-3">
+                                <a href = "#" class="btn btn-default" id = "cancel">Cancel</a>
+                                <button type="submit" class="btn btn-default" id = "submitted">Submit</button>
+                            </div>
+                        </div>
+                    </form>
                         <hr class="star-light">
+                        <span class="name"></span>
                     </div>
                 </div>
             </div>
@@ -106,12 +192,34 @@
     </header>
 
     <!-- About Section -->
-    <section class="success" id="subscribe">
+    <section id="subscribe" class="success">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center intro-text">
                     <h2>Committees</h2>
                     <hr class="star-light">
+                    <div class="menu" id = "cssmenu">
+                        <ul class="menu">
+                            <li class="menu"><a href="#"><span>Activities Committee</span></a>
+                                <ul class="menu">
+                                    <li class="menu"> Help plan GBMs and social events!
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu"><a href="#"><span>Educational Outreach Committee</span></a>
+                                <ul class="menu">
+                                    <li class="menu">Reach out and mentor high school students regularly.
+                                        </li>
+                                </ul>
+                            </li>
+
+                            <li class="menu"><a href="#"><span>Tech Committee</span></a>
+                                <ul class="menu">
+                                    <li class="menu">Help build things, like this website, for SWE. </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -175,11 +283,10 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Penn SWE</h3>
-                        <a href = "index.php#about">About</a><br>
-                        <a href = "index.php#board">Board</a><br>
+                        <a href = "index.php">About</a><br>
                         <a href = "events.php">Events</a><br>
                         <a href = "getinvolved.php">Get Involved</a><br>
-                        <a href = "contact.php">Contact Us</a>
+                        <a href = "contact.php">Sponsorship</a>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
@@ -187,6 +294,7 @@
                             <li>
                                 <a href="https://www.facebook.com/upenn.sweundergrad?fref=ts" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
                             </li>
+                            <li>
                                 <a href="https://twitter.com/intent/follow?screen_name=PennSWE" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
                             </li>
                         </ul>
@@ -195,15 +303,12 @@
                         <h3>SWE Resources</h3>
                         <a href = "http://societyofwomenengineers.swe.org/">National SWE</a><br>
                         <a href = "http://regione.swe.org/">PA Regional SWE</a><br>
-                        <a href = "http://societyofwomenengineers.swe.org/index.php/scholarships">SWE Scholarship</a><br>
+                        <a href = "http://societyofwomenengineers.swe.org/index.php/scholarships">SWE Scholarship</a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -215,9 +320,10 @@
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
 
 </body>
+
+</html>
