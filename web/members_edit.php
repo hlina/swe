@@ -43,13 +43,12 @@
             $('#logform').hide();
         });
         $("#submitted").click(function() {
-            var x=document.forms["login-form"]["email"].value;
-            var seas = x.indexOf("seas.upenn.edu")
-            if (x==null || x=="" || seas == -1){
+            var x=document.forms["login-form"][0].value;
+            var seas1 = x.indexOf("seas.upenn.edu");
+            var y = document.forms["login-form"][1].value;
+            var seas2 = y.indexOf("seas.upenn.edu");
+            if ((x==null || x=="" || seas1 == -1)&&(y==null || y=="" || seas2 == -1)){
                 alert("Please fill out the email field with your SEAS email.");
-            }
-            else {
-                window.location.assign("https://fling.seas.upenn.edu/~swe/cgi-bin/temp/members/member.php");
             }
         });
     });
@@ -100,7 +99,7 @@
                         <a href="events.php" data-toggle="dropdown" class="dropdown-toggle">GET INVOLVED<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="page-scroll"><a href="getinvolved.php#subscribe">Committees</a></li>
-                            <li class="page-scroll"><a href="getinvolved.php#sponsorship">Join Listserve</a></li>
+                            <li class="page-scroll"><a href="getinvolved.php#sponsorship">Join Listserv</a></li>
                         </ul>
                     </li>
                     <li class="page-scroll">
@@ -129,6 +128,40 @@
                     <div class="intro-text">
                         <h3>Account for: <? echo $_SESSION['user']['email'] ?></h3>
                         <hr class="star-light">
+                        <form name="login-form" class="form-horizontal" id = "logform" method="post" action="login.php">
+                        <ul class="nav nav-tabs">
+                        <li class="active"><a href="#info-tab" data-toggle="tab">Returning Member<i class="fa"></i></a></li>
+                        <li><a href="#address-tab" data-toggle="tab">New Member<i class="fa"></i></a></li>
+                        </ul>
+                        <br>
+                        <label class="col-xs-3 control-label">Penn SEAS Email Address</label>
+                        <div class="col-xs-5">
+                            <input type="email" class="form-control" id="email" name = "email" placeholder="SEAS email">
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="info-tab">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="address-tab">
+                                <div class="form-group">
+                                </div>
+                                <div class="form-group">
+                                    <div class="radio"><label><input name="year" type="radio" value = "2016">2016</label></div>
+                                    <div class="radio"><label><input name="year" type="radio" value = "2017">2017</label></div>
+                                    <div class="radio"><label><input name="year" type="radio" value = "2018">2018</label></div>
+                                    <div class="radio"><label><input name="year" type="radio" value = "2019">2019</label></div>
+                                    <div class="radio"><label><input name="year" type="radio" value = "Other">Other</label></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 15px;">
+                            <div class="col-xs-5 col-xs-offset-3">
+                                <a href = "#" class="btn btn-default" id = "cancel">Cancel</a>
+                                <button type="submit" class="btn btn-default" id = "submitted">Submit</button>
+                            </div>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -186,7 +219,7 @@
                             <input class="radio" type="radio" name="major" value="CIS" <? if ($_SESSION['user']['major'] == 'CIS'){ ?>checked<? } ?>>Computer Science <br/>
                             <input class="radio" type="radio" name="major" value="DMD" <? if ($_SESSION['user']['major'] == 'DMD'){ ?>checked<? } ?>>Digital Media Design <br/>
                             <input class="radio" type="radio" name="major" value="EE" <? if ($_SESSION['user']['major'] == 'EE'){ ?>checked<? } ?>>Electrical Engineering <br/>
-                            <input class="radio" type="radio" name="major" value="MKSE" <? if ($_SESSION['user']['major'] == 'MKSE'){ ?>checked<? } ?>>Marketing and Social Systems Engineering <br/>
+                            <input class="radio" type="radio" name="major" value="NETs" <? if ($_SESSION['user']['major'] == 'NETs'){ ?>checked<? } ?>>NETs <br/>
                             
                         </td>
                     </tr>
@@ -195,13 +228,13 @@
                             Year:
                         </td>
                         <td width="70px" valign="top">
-                            <input class="radio" type="radio" name="year" value="2013" <? if ($_SESSION['user']['year'] == '2013'){ ?>checked<? } ?>>2013 <br/>
-                            <input class="radio" type="radio" name="year" value="2014" <? if ($_SESSION['user']['year'] == '2014'){ ?>checked<? } ?>>2014 <br/>
-                            <input class="radio" type="radio" name="year" value="Grad" <? if ($_SESSION['user']['year'] == 'Grad'){ ?>checked<? } ?>>Grad <br/>
+                            <input class="radio" type="radio" name="year" value="2019" <? if ($_SESSION['user']['year'] == '2019'){ ?>checked<? } ?>>2019 <br/>
+                            <input class="radio" type="radio" name="year" value="2018" <? if ($_SESSION['user']['year'] == '2018'){ ?>checked<? } ?>>2018 <br/>
+                            <input class="radio" type="radio" name="year" value="Other" <? if ($_SESSION['user']['year'] == 'Other'){ ?>checked<? } ?>>Other <br/>
                         </td>
                         <td width="80px" valign="top">
-                            <input class="radio" type="radio" name="year" value="2015" <? if ($_SESSION['user']['year'] == '2015'){ ?>checked<? } ?>>2015 <br/>
-                            <input class="radio" type="radio" name="year" value="2016" <? if ($_SESSION['user']['year'] == '2012'){ ?>checked<? } ?>>2016 <br/>
+                            <input class="radio" type="radio" name="year" value="2017" <? if ($_SESSION['user']['year'] == '2017'){ ?>checked<? } ?>>2017 <br/>
+                            <input class="radio" type="radio" name="year" value="2016" <? if ($_SESSION['user']['year'] == '2016'){ ?>checked<? } ?>>2016 <br/>
                             <input class="radio" type="radio" name="year" value="Alumnus" <? if ($_SESSION['user']['year'] == 'Alumnus'){ ?>checked<? } ?>>Alumnus <br/>
                         </td>
                     </tr>
@@ -228,7 +261,7 @@
                         <a href = "index.php">About</a><br>
                         <a href = "events.php">Events</a><br>
                         <a href = "getinvolved.php">Get Involved</a><br>
-                        <a href = "contact.php">Contact Us</a>
+                        <a href = "contact.php">Sponsorship</a>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
@@ -262,7 +295,6 @@
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>

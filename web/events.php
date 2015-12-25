@@ -122,7 +122,7 @@
                         <a href="events.php" data-toggle="dropdown" class="dropdown-toggle">GET INVOLVED<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="page-scroll"><a href="getinvolved.php#subscribe">Committees</a></li>
-                            <li class="page-scroll"><a href="getinvolved.php#sponsorship">Join Listserve</a></li>
+                            <li class="page-scroll"><a href="getinvolved.php#sponsorship">Join Listserv</a></li>
                         </ul>
                     </li>
                     <li class="page-scroll">

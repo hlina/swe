@@ -121,7 +121,7 @@
                         <a href="events.php" data-toggle="dropdown" class="dropdown-toggle">GET INVOLVED<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="page-scroll"><a href="getinvolved.php#subscribe">Committees</a></li>
-                            <li class="page-scroll"><a href="getinvolved.php#sponsorship">Join Listserve</a></li>
+                            <li class="page-scroll"><a href="getinvolved.php#sponsorship">Join Listserv</a></li>
                         </ul>
                     </li>
                     <li class="page-scroll">
@@ -185,6 +185,7 @@
                     </form>
                         <hr class="star-light">
                         <span class="name"></span>
+                        <p>Become a general body member! Sign up as a member by clicking sign in above. Come to GBMs and other events, which you can learn about by signing up for our listserv below. Aside from being a general body member, become more involved by joining a committee, described below.</p>
                     </div>
                 </div>
             </div>
@@ -231,14 +232,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Join Listserve</h2>
+                    <h2>Join Listserv</h2>
                     <hr class="star-primary">
                 </div>
                 <div class="row">
             <!-- Begin MailChimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;}
+    #mc_embed_signup form {display:block; position:relative; text-align:left; padding:10px 0 10px 3%; width: 75%; margin-left:15%; width: 70%;
+    margin-right: 15%;}
     /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
        We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 </style>
